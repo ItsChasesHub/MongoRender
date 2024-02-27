@@ -1,10 +1,10 @@
 {
-  "name": "ckMongoTest",
+  "name": "crlMongoTest",
   "version": "1.0.0",
-  "description": "CKs Express Mongo Test on Render",
+  "description": "CRLs Express Mongo Test on Render",
   "main": "testmongo.js",
   "repository": "https://github.com/ckorpio/MongoRender",
-  "author": "CK",
+  "author": "CRL",
   "license": "MIT",
   "private": false,
   "scripts": {
