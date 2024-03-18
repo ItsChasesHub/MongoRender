@@ -29,28 +29,28 @@ app.get('/say/:name', function(req, res) {
 
 // Route to access database:
 app.get('/api/mongo/:item', function(req, res) {
-const client = new MongoClient(uri);
-const searchKey = "{ partID: '" + req.params.item + "' }";
-console.log("Looking for: " + searchKey);
+  const client = new MongoClient(uri);
+  const searchKey = "{ userID: '" + req.params.item + "' }"; // Adjusted to userID
+  console.log("Looking for: " + searchKey);
 
-async function run() {
-  try {
-    const database = client.db('crlmdb');
-    const parts = database.collection('cmps415');
+  async function run() {
+    try {
+      const database = client.db('crlmdb');
+      const parts = database.collection('cmps415');
 
-    // Hardwired Query for a part that has partID '12345'
-    // const query = { partID: '12345' };
-    // But we will use the parameter provided with the route
-    const query = { partID: req.params.item };
+      // Hardwired Query for a part that has userID '12345'
+      // const query = { userID: '12345', userPASS: 'password' };
+      // But we will use the parameter provided with the route
+      const query = { userID: req.params.item };
 
-    const part = await parts.findOne(query);
-    console.log(part);
-    res.send('Found this: ' + JSON.stringify(part));  //Use stringify to print a json
+      const part = await parts.findOne(query);
+      console.log(part);
+      res.send('Found this: ' + JSON.stringify(part));  //Use stringify to print a json
 
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
+    } finally {
+      // Ensures that the client will close when you finish/error
+      await client.close();
+    }
   }
-}
-run().catch(console.dir);
+  run().catch(console.dir);
 });
