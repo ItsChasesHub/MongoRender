@@ -36,7 +36,7 @@ app.get('/api/mongo/:item', function(req, res) {
   async function run() {
     try {
       const database = client.db('crlmdb');
-      const parts = database.collection('cmps415');
+      const parts = database.collection('credentials');
 
       // Hardwired Query for a part that has userID '12345'
       // const query = { userID: '12345', userPASS: 'password' };
